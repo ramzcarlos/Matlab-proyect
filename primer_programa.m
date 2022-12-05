@@ -1,0 +1,51 @@
+clc;
+clear;
+disp("mi primer programa utilizando ciclo for");
+A=[1,5,3,9;8,4,2,3;7 8 6 9];
+B=[8,19,5,0,6 ,8];
+A=A+10;
+%disp(size(B));
+% ciclo for para moverse en posiciones en un vector
+for i=1:4
+    if B(i) >4
+        B(i)=B(i)+10;
+    else 
+        disp("no hizo nada");
+    end
+end
+%ciclo for para realizar operaciones
+
+a=0;
+for i=1:5
+    
+    a=a+i;
+    disp(a);
+end
+
+
+fprintf("el valor de a es:%d \n",a);
+
+
+f0=0;
+f1=0;
+aux=0;
+disp("serie de fibnacci")
+for i=0:6
+    if i==0
+        f0=0;
+    elseif i==1
+        f1=1;
+    elseif i >=2
+        aux=f1;
+        f1=f1+f0;
+        f0=aux;
+    end
+    %disp(i)
+    disp(f1)
+end
+       
+   
+
+      
+     
+

@@ -1,0 +1,62 @@
+
+ UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO
+
+ Dinámica Estructural - Programa Múltiples Grados de Libertad
+
+ Realizó: David López Delgado
+
+ 1.- Conocer el intervalo de tiempo en acelerograma (dt).
+ 2.- Conocer el valor del porcentaje de amortiguamiento modal (z).
+ 3.- Colocar scripts de fuciones (___.m) en carpeta de origen.
+ 4.- Colocar archivos (__.txt) necesarios en carpeta de origen.
+ 5.- Definir valores de entrada.
+ 6.- Correr script.
+
+
+ -------------- VALORES DE ENTRADA -------------- 
+
+----------- A partir de un archivo de texto------------
+----- Se necesita un archivo ___.txt por variable -----
+
+-------------- VARIABLES -------------- 
+
+- M       Matriz cuadrada de masas.
+- K       Matriz cuadrada de rigideces.
+- k_v     Vector horizontal de rigideces por entrepiso.
+- sismo   Vector vertical de registro de aceleraciones (sin intervalo de tiempo).
+
+OPCIONALES:
+
+- acc     Vector horizontal de acaleraciones leídas del espectro.
+
+----------- A partir de valores específicos------------
+--------------- Plantilla de ejemplo ------------------
+
+ k_v=[30,70,50];
+ k=k_v;
+ K=[100,-70,0;-70,120,-50;0,-50,50];
+ M=[0.1274,0,0;0,0.1019,0;0,0,0.2039];
+
+-------------- FUNCIONES DENTRO DEL PROGRAMA -------------- 
+
+ El script utiliza funciones para resolver las ecuaciones modales de movimiento mediante el método paso a paso, 
+ y tienen la siguiente estructura.
+
+            function [_VALOR_]=_VALOR_(sismo,z,T,m,dt)
+Donde:
+
+ z= Amortiguamiento
+ T= Periodo
+ m= Masa
+ dt= Intervalo de tiempo del registro acelerográfico
+ sismo= Acelerograma (Desde archivo)
+
+ Las funciones y el archivo "Programa 3" deben encontrarse en la misma carpeta  .
+ Las funciones que utiliza el programa arrojan los siguientes valores:
+
+VALOR:
+
+ - Sa_T = Aceleración total
+ - ACC  = Aceleración relativa
+ - VEL  = Velocidad relativa
+ - DES  = Desplazamiento relativo
