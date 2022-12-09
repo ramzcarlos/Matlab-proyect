@@ -1,24 +1,26 @@
-function [Sa_T]=Sa_T(sismo,z,T,m,dt)
+function [VEL]=VEL(sismo,z,T,m,dt)
+
 
 %Maestria en Ciencias de la Ingeniría
 %Sonia Valdez Mejia
+%
 %                    VARIABLES
 %
 % z= Amortiguamiento
 % T= Periodo
 % m= Masa
 % dt= Intervalo de tiempo
-% sismo= Acelerograma (Desde archivo)
+%sismo= Acelerograma (Desde archivo)
 %
 %                     FUNCIÓN
 %
-%function [Aceleración total]=Sa_T(sismo,z,T,m,dt)
+%function [VEL]=VEL(sismo,z,T,m,dt)
 %
 % -------------------Plantilla---------------------
-% clear
-% load sismo.txt
-% [Sa_T]=Sa_T(sismo,0.05,0.5,1,0.01)
+%load sismo.txt
+% [VEL]=VEL(sismo,0.05,0.5,1,0.01);
 %---------------------------------------------------
+
 
 n=length(sismo);
 p=-m*sismo;
@@ -40,7 +42,7 @@ b1=(-w*z*s/wd+c)*e;
 b2=e*s*((z*z/(m*wd))+(wd/(m*w^2)));
 b3=(1-e*c)/(m*w^2)+e*s*(((z-2*z^3)/(m*w*wd))-(2*z*wd)/(m*w^3));
 %Valores iniciales
-des(1)=0; vel(1)=0; acc(1)=0; nu(1)=0;
+des(1)=0; vel(1)=0; acc(1)=0; nu(1)=0; 
 %Iteraciones del cálculo de la respuesta
 for i=2:n;
     nu(i,1)=(p(i)-p(i-1))/dt;
@@ -50,11 +52,15 @@ for i=2:n;
 end
 %Respuesta del sistema
 if T==0
-    acc_T(n,1)=(max(max(sismo),abs(min(sismo))));
-    y=[acc_T];
-    Sa_T=max(abs(y));
+    acc_T(n,1)=(max(abs(sismo)));
+% DES=max(abs(des));
+VEL=max(abs(vel));
+% ACC=max(abs(acc));
+% ACC_T=max(abs(acc_T));
 else
-    acc_T=(acc+sismo);
-    y=[acc_T];
-    Sa_T=max(abs(y));
+ acc_T=(acc+sismo);
+% DES=max(abs(des));
+VEL=max(abs(vel));
+% ACC=max(abs(acc));
+% ACC_T=max(abs(acc_T));
 end
